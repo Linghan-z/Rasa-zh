@@ -1,0 +1,53 @@
+version: "3.0"
+nlu:
+  - intent: goodbye
+    examples: |
+      - 拜拜
+      - 再见
+      - 拜
+      - 退出
+      - 结束
+  - intent: greet
+    examples: |
+      - 你好
+      - 您好
+      - Hello
+      - hello
+      - Hi
+      - hi
+      - 喂
+      - 在么
+  - intent: query_knowledge_base
+    examples: |
+      - [歼-16战机](military)是哪个国家的？
+      - [歼-16战机](military)是哪个国家生产的？
+      - 有什么[武器](military)?
+      - 有什么先进的[武器](military)?
+      - 给我列一些[武器](military)
+      - 给我列一些[中国](country)的[武器](military)
+      - [中国](country)有什么[武器](military)？
+  - synonym: "1"
+    examples: |
+      - 第一个
+  - synonym: "2"
+    examples: |
+      - 第二个
+  - synonym: "3"
+    examples: |
+      - 第三个
+  - synonym: LAST
+    examples: |
+      - 最后一个
+      - 最后那个
+      - 最后的
+  - synonym: "4"
+    examples: |
+      - 第四个
+  - synonym: military
+    examples: |
+      - 武器
+      - 哪个武器
+  - synonym: country
+    examples: |
+      - 国家
+      - 哪个国家

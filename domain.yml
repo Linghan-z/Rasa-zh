@@ -1,0 +1,73 @@
+version: "3.0"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+  - goodbye
+  - greet
+  - query_knowledge_base:
+      use_entities: []
+entities:
+  - object_type
+  - mention
+  - attribute
+  - object-type
+  - military
+  - country
+slots:
+  attribute:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: attribute
+  knowledge_base_last_object:
+    type: any
+    mappings:
+      - type: custom
+  knowledge_base_last_object_type:
+    type: any
+    mappings:
+      - type: custom
+  knowledge_base_listed_objects:
+    type: any
+    mappings:
+      - type: custom
+  knowledge_base_objects:
+    type: any
+    mappings:
+      - type: custom
+  mention:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: mention
+  object_type:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: object_type
+  military:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: military
+  country:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: country
+responses:
+  utter_greet:
+    - text: 你好，我是 Silly, 一个可以利用知识图谱帮你查询的机器人。
+  utter_goodbye:
+    - text: 再见！
+  utter_default:
+    - text: 系统不明白您说的话
+  utter_ask_rephrase:
+    - text: 抱歉系统没能明白您的话，请您重新表述一次
+actions:
+  - action_response_query
+  - utter_goodbye
+  - utter_greet
+  - utter_default
+  - utter_ask_rephrase
