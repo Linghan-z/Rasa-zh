@@ -23,11 +23,25 @@ class Neo4jKnowledgeBase(KnowledgeBase):
         self.representation_attribute = defaultdict(lambda: "name")
 
         self.relation_attributes = {
-            # "Singer": {},
-            # "Album": {},
-            # "Song": {"singer": "SUNG_BY", "album": "INCLUDED_IN"},
-            "Military": {"country": "producing_country"},
+            "Military": {"country": "producing_country",
+                         "research_and_develop_organization": "Military2RandD_organization",
+                         "producer": "Military2Producer",
+                         "category": "Category",
+                         "armored_car_chassis_type": "chassis_type",
+                         "vessels_activity_area": "activity_area",
+                         "pneumatic_layout": "pneumatic_layout",
+                         "cannon_calibre": "cannon_calibre",
+                         "cannon_type": "cannon_type"},
             "Country": {},
+            "Research_and_develop_organization": {"Country": "RandD_organization_in_country"},
+            "Producer": {"Country": "producer_in_country"},
+            "Class": {},
+            "Category": {"Class": "Category_in_Class"},
+            "Cannon_type": {},
+            "Cannon_calibre": {},
+            "Pneumatic_layout": {},
+            "Vessels_activity_area": {},
+            "Armored_car_chassis_type": {}
 
         }
 
@@ -298,44 +312,43 @@ if __name__ == "__main__":
     kb = Neo4jKnowledgeBase("bolt://localhost:7687", "neo4j", "43215678")
     loop = asyncio.get_event_loop()
 
-    result = loop.run_until_complete(kb.get_objects("singer", [], 5))
-    print(result)
+    # result = loop.run_until_complete(kb.get_objects("singer", [], 5))
+    # print(result)
+    #
+    # result = loop.run_until_complete(
+    #     kb.get_objects("singer", [{"name": "name", "value": "周杰伦"}], 5)
+    # )
+    # print(result)
+    # print('******')
+    #
+    # result = loop.run_until_complete(
+    #     kb.get_objects(
+    #         "song",
+    #         [{"name": "name", "value": "晴天"}, {"name": "album", "value": "叶惠美"}],
+    #         5,
+    #     )
+    # )
+    # print(result)
+    # print('******')
+    #
+    # result = loop.run_until_complete(kb.get_object("singer", "0"))
+    # print(result)
+    #
+    # result = loop.run_until_complete(kb.get_object("singer", "周杰伦"))
+    # print(result)
+    # print('******')
+    # result = loop.run_until_complete(kb.get_object("song", "晴天"))
+    # print(result)
+    # print('******')
+    #
+    #
+    # result = loop.run_until_complete(kb.get_attributes_of_object("military"))
+    # print(result)
+    #
+    # result = loop.run_until_complete(kb.get_attributes_of_object("song"))
+    # print(result)
 
-    result = loop.run_until_complete(
-        kb.get_objects("singer", [{"name": "name", "value": "周杰伦"}], 5)
-    )
-    print(result)
-    print('******')
-
-    result = loop.run_until_complete(
-        kb.get_objects(
-            "song",
-            [{"name": "name", "value": "晴天"}, {"name": "album", "value": "叶惠美"}],
-            5,
-        )
-    )
-    print(result)
-    print('******')
-
-    result = loop.run_until_complete(kb.get_object("singer", "0"))
-    print(result)
-
-    result = loop.run_until_complete(kb.get_object("singer", "周杰伦"))
-    print(result)
-    print('******')
-    result = loop.run_until_complete(kb.get_object("song", "晴天"))
-    print(result)
-    print('******')
-
-
-    result = loop.run_until_complete(kb.get_attributes_of_object("singer"))
-    print(result)
-
-    result = loop.run_until_complete(kb.get_attributes_of_object("song"))
-    print(result)
-
-
-    result = loop.run_until_complete(kb.get_object("military", "歼-16战机"))
+    result = loop.run_until_complete(kb.get_object("producer", "飞鹰工业公司"))
     # result = loop.run_until_complete(
     #     kb.get_objects(
     #         "military",

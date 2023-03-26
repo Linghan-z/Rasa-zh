@@ -14,6 +14,15 @@ entities:
   - object-type
   - military
   - country
+  - producer
+  - class
+  - research_and_develop_organization
+  - category
+  - cannon_type
+  - cannon_calibre
+  - pneumatic_layout
+  - vessels_activity_area
+  - armored_car_chassis_type
 slots:
   attribute:
     type: any
@@ -56,6 +65,51 @@ slots:
     mappings:
       - type: from_entity
         entity: country
+  producer:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: producer
+  class:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: class
+  research_and_develop_organization:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: research_and_develop_organization
+  category:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: category
+  cannon_type:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: cannon_type
+  cannon_calibre:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: cannon_calibre
+  pneumatic_layout:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: pneumatic_layout
+  vessels_activity_area:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: vessels_activity_area
+  armored_car_chassis_type:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: armored_car_chassis_type
 responses:
   utter_greet:
     - text: 你好，我是 Silly, 一个可以利用知识图谱帮你查询的机器人。

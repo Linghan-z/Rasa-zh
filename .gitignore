@@ -15,3 +15,4 @@ results/
 # for python
 __pycache__/*
 .rasa
+/data/total_word_feature_extractor_zh.dat

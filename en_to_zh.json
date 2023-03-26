@@ -1,4 +1,13 @@
 {
     "military": "武器",
-    "country": "国家"
+    "country": "国家",
+    "producer": "生产商",
+    "class": "大类",
+    "research_and_develop_organization": "研发商",
+    "category" : "类别",
+    "cannon_type": "型号",
+    "cannon_calibre": "口径",
+    "pneumatic_layout": "气动布局",
+    "vessels_activity_area": "活动范围",
+    "armored_car_chassis_type": "底盘类型"
 }

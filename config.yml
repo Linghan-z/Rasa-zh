@@ -2,18 +2,32 @@ recipe: default.v1
 language: zh
 
 pipeline:
+#  - name: MitieNLP
+#    model: data/total_word_feature_extractor_zh.dat
   - name: JiebaTokenizer
+    dictionary_path: "/Users/zlh/Rasa-zh/dicts"
   - name: LanguageModelFeaturizer
     model_name: bert
     model_weights: bert-base-chinese
   - name: RegexFeaturizer
+#  - name: MitieFeaturizer
   - name: DIETClassifier
     epochs: 1000
     learning_rate: 0.001
+#    entity_recognition: False
   - name: FallbackClassifier
     threshold: 0.4
     ambiguity_threshold: 0.1
-  - name: EntitySynonymMapper     
+  - name: EntitySynonymMapper
+#  - name: MitieEntityExtractor
+#  - name: DucklingEntityExtractor
+#    # url of the running duckling server
+#    url: "http://localhost:8000"
+#    dimensions: ["military", "country", "producer", "class"]
+  - name: RegexEntityExtractor
+    use_word_boundaries: False #中文环境要用
+    use_lookup_tables: True
+    use_regexes: True
 
 policies:
   - name: MemoizationPolicy
